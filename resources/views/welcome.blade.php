@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
- <!-- Test ? -->
-=======
-<!-- <!DOCTYPE html>Test ? -->
->>>>>>> 3e4019198b6c036d9c4d1879651346c0ca189586
+ <!-- Test aaaa -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
