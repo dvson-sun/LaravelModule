@@ -51,6 +51,6 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->belongsTo(Order::class, 'user_id', 'id');
+        return $this->hasMany(Order::class, 'user_id', 'id');
     }
 }
