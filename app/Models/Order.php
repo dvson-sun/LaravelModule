@@ -16,8 +16,4 @@ class Order extends Model
         'user_id',
     ];
 
-    public function users()
-    {
-        return $this->hasMany(User::class, 'user_id', 'id');
-    }
 }
