@@ -17,12 +17,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = "users";
+
     protected $fillable = [
-        'name',
+        'fistname',
+        'lastname',
         'email',
         'password',
+        'isActive',
+        'isAdmin',
+        'username',
     ];
-
+    
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -30,6 +36,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'isAdmin',
         'remember_token',
     ];
 
@@ -41,4 +48,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function orders()
+    {
+        return $this->belongsTo(Order::class, 'user_id', 'id');
+    }
 }
