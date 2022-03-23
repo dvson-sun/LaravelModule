@@ -53,13 +53,13 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->belongsTo(Order::class, 'user_id', 'id');
+        return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
     public function getFullNameAttribute(){
         return "{$this->first_name} {$this->last_name}";
     }
-
+    
     public function setUsernameAttributes($username){
         $this->attributes['username'] = Str::slug($username);
     }
