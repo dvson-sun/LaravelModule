@@ -8,18 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
     protected $table = "orders";
 
-
     protected $fillable = [
-        "name",
-        "user_id",
+        'name',
+        'user_id',
     ];
-    protected $hidden = [
 
-    ];
-    public function user()
+    public function users()
     {
-        return $this->hasMany(User::class,"user_id","id");
+        return $this->hasMany(User::class, 'user_id', 'id');
     }
 }
