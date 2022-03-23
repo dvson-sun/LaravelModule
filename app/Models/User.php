@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
+
 
 class User extends Authenticatable
 {
@@ -20,8 +22,8 @@ class User extends Authenticatable
     protected $table = "users";
 
     protected $fillable = [
-        'fistname',
-        'lastname',
+        'fist_name',
+        'last_name',
         'email',
         'password',
         'isActive',
@@ -52,5 +54,13 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->belongsTo(Order::class, 'user_id', 'id');
+    }
+
+    public function getFullNameAttribute(){
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function setUsernameAttributes($username){
+        $this->attributes['username'] = Str::slug($username);
     }
 }
