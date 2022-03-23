@@ -12,8 +12,7 @@ class Order extends Model
 
 
     protected $fillable = [
-        "name",
-        "user_id",
+        'name',
     ];
     protected $hidden = [
 
