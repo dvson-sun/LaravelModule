@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('users')->name('user.')->controller(ControllersUserController::class)->group(function () {
+Route::prefix('users')->name('users.')->controller(ControllersUserController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
     Route::get('/create', 'create')->name('create');
