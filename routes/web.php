@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('user')->controller(ControllersUserController::class)->group(function () {
+Route::prefix('users')->name('users.')->middleware('checkAdmin')->controller(ControllersUserController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
     Route::get('/create', 'create')->name('create');
@@ -30,4 +30,4 @@ Route::prefix('user')->controller(ControllersUserController::class)->group(funct
     Route::delete('/{id}', 'destroy')->name('destroy');
 });
 
-Route::resource('order', OrderController::class);
+Route::resource('orders', OrderController::class);
