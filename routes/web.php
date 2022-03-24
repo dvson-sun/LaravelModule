@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController as ControllersUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('user')->controller(ControllersUserController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{id}', 'show')->name('show');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::put('/{id}', 'update')->name('update');
+    Route::delete('/{id}', 'destroy')->name('destroy');
+});
+
+Route::resource('order', OrderController::class);
