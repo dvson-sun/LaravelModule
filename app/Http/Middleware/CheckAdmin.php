@@ -17,7 +17,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->isAdmin) {
+        if (Auth::user() && Auth::user()->isAdmin) {
             return $next($request);
         }
         
