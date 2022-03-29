@@ -31,3 +31,7 @@ Route::prefix('users')->name('users.')->middleware('checkAdmin')->controller(Con
 });
 
 Route::resource('orders', OrderController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
