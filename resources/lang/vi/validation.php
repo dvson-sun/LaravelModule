@@ -2,7 +2,7 @@
 
 return [
 
-    'accepted'             => 'Trường :attribute phải được chấp nhận.',
+    'accepted' => 'Trường :attribute phải được chấp nhận.',
     'accepted_if'          => 'Trường :attribute phải được chấp nhận khi :other là :value.',
     'active_url'           => 'Trường :attribute không phải là một URL hợp lệ.',
     'after'                => 'Trường :attribute phải là một ngày sau ngày :date.',
