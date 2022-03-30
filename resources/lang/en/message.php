@@ -26,4 +26,5 @@ return [
     'productImage' => 'Product image',
     'confirmDeleteBrand' => 'Are you sure you want to delete this brand ?',
     'confirmDeleteProduct' => 'Are you sure you want to delete this product ?',
+    
 ];
