@@ -21,6 +21,7 @@ class Locale
         if (session()->has('locale')) {
             App::setLocale(session()->get('locale'));
         }
+        
         return $next($request);
     }
 }
