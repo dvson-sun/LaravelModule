@@ -1,0 +1,29 @@
+{
+  "name": "laravel_quicktask",
+  "description": "",
+  "main": "",
+  "authors": [
+    "dvson-sun <dao.vinh.son@sun-asterisk.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "bower"
+  ],
+  "homepage": "https://github.com/dvson-sun/LaravelModule",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/bower_components"
+  ],
+  "dependencies": {
+    "jquery": "jquery/jquery-dist#^3.6.0",
+    "masonry-layout": "desandro/masonry#^4.2.2",
+    "components-font-awesome": "^6.1.0",
+    "bootstrap": "^5.1.3",
+    "light-dashboard": "https://github.com/dvson-sun/light-dashboard.git"
+  }
+}
