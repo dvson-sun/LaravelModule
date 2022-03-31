@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return "index user";
+        return view('pages.users');
     }
     
     public function create()
