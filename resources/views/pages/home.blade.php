@@ -4,7 +4,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="row" style="margin-top: 100px;">
+        <div class="row">
             <h1 class="text-center">LARAVEL QUICKTASK BY DVSON</h1>
         </div>
     </div>
