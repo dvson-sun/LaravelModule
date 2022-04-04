@@ -20,15 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('users')->name('users.')->middleware('checkAdmin')->controller(ControllersUserController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::post('/', 'store')->name('store');
-    Route::get('/create', 'create')->name('create');
-    Route::get('/{id}', 'show')->name('show');
-    Route::get('/{id}/edit', 'edit')->name('edit');
-    Route::put('/{id}', 'update')->name('update');
-    Route::delete('/{id}', 'destroy')->name('destroy');
-});
+Route::resource('users', ControllersUserController::class)->middleware('checkAdmin');
 
 Route::resource('orders', OrderController::class)->middleware('checkAdmin');
 

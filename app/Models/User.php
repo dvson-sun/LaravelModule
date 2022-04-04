@@ -24,6 +24,14 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    const IS_ADMIN = 1;
+    const USER_ACTIVE = 1;
+    const USER_UNACTIVE = 0;
+    const DB_TABLE = 'users';
+
+    protected $table = self::DB_TABLE;
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -42,7 +50,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'isAdmin',
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
@@ -64,17 +71,27 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'user_id', 'id');
-    }
-
+    
     public function getFullNameAttribute(){
         return "{$this->first_name} {$this->last_name}";
     }
     
     public function setUsernameAttributes($username){
         $this->attributes['username'] = Str::slug($username);
+    }
+    
+    public function isAdmin()
+    {
+        return $this->isAdmin === self::IS_ADMIN;
+    }
+    
+    public function isActive()
+    {
+        return $this->isActive === self::USER_ACTIVE;
+    }
+    
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
     }
 }

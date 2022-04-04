@@ -9,10 +9,14 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $table = "orders";
+    const DB_TABLE = 'orders';
+
+    protected $table = self::DB_TABLE;
 
     protected $fillable = [
         'name',
+        'price',
+        'quantity',
         'user_id',
     ];
 
