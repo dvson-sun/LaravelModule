@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {  
-        // $this->seederAdminAccount();
+        $this->seederAdminAccount();
         $this->seederUserAccount();
     }   
 

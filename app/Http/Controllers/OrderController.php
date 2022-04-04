@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\EditOrderRequest;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -11,9 +16,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    const PAGINATE_NUMBER = 5;
+
     public function index()
     {
-        return view('pages.orders');
+        $orders = DB::table('orders')
+            ->join('users', 'users.id', '=', 'orders.user_id')
+            ->select('orders.*', 'users.username')
+            ->orderBy('orders.id', 'desc')
+            ->paginate(self::PAGINATE_NUMBER);
+
+        return view('pages.orders.orders', compact('orders'));
     }
 
     /**
@@ -23,7 +36,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return "create order";
+        return view('pages.orders.add');
     }
 
     /**
@@ -32,9 +45,11 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateOrderRequest $request)
     {
-        return "store order";
+        Order::create($request->all());
+
+        return redirect()->route('orders.index')->with('success','Create success');
     }
 
     /**
@@ -56,7 +71,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        return "edit order";
+        $order = Order::findOrFail($id);
+
+        return view('pages.orders.edit', compact('order'));
     }
 
     /**
@@ -66,9 +83,16 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditOrderRequest $request, $id)
     {
-        return "update order";
+        $order = Order::findOrFail($id);
+        $order->name = $request->name;
+        $order->price = $request->price;
+        $order->quantity = $request->quantity;
+        $order->user_id = $request->user_id;
+        $order->update();
+
+        return redirect()->route('orders.index')->with('success','Update success');
     }
 
     /**
@@ -79,6 +103,9 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        return "delete order";
+        $user = Order::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('orders.index')->with('success','Delete success');
     }
 }

@@ -15,7 +15,9 @@ class OrderFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'user_id' => rand(0,11),
+            'price' => rand(10000000,30000000),
+            'quantity' => rand(1,5),
+            'user_id' => rand(0,30),
         ];
     }
 }
