@@ -1,5 +1,4 @@
 {
-    "Product" : "Sản phẩm",
     "First Name is required!" : "Họ không được để trống!",
     "First Name cannot be more than 255 characters!" : "Họ không được nhiều hơn 255 ký tự",
     "Last Name is required!" : "Tên không được để trống",
