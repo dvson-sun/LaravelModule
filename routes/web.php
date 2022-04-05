@@ -32,7 +32,7 @@ Route::prefix('users')->name('users.')->middleware('checkAdmin')->controller(Con
 
 Route::resource('orders', OrderController::class)->middleware('checkAdmin');
 
-Route::get('language/{language}',[LangController::class,'changeLanguage'])->name('language');
+Route::get('language/{language}', [LangController::class, 'changeLanguage'])->name('language');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

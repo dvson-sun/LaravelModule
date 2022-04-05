@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-light navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Right navbar links -->
-    <a class="navbar-brand" href="#"><span>Adminitrator </span></a>
+    <a class="navbar-brand" href="#"><span> {{ __('Adminitrator') }}</span></a>
     <ul class="navbar-nav ml-auto navbar-ul" style="margin-left: 50%;">
         <li>
             <div class=" bg-white dark:bg-gray-800 sm:rounded-lg">
