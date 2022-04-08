@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\LiveSearchController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController as ControllersUserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::prefix('users')->name('users.')->middleware('checkAdmin')->controller(Con
 });
 
 Route::resource('orders', OrderController::class)->middleware('checkAdmin');
+
+Route::get('/search', [OrderController::class,'search']);
 
 Route::get('language/{language}', [LangController::class, 'changeLanguage'])->name('language');
 

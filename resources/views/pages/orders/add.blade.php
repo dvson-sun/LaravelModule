@@ -24,9 +24,9 @@
     <div class="content">
         <div class="container">
             @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">{{ __($error) }}</div>
-                @endforeach
+            @foreach ($errors->all() as $error)
+            <div class="alert alert-danger">{{ __($error) }}</div>
+            @endforeach
             @endif
             <div class="row">
                 <div class="col-md-12">
@@ -44,11 +44,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="quantity">{{ __('Quantity') }}</label>
-                                    <input type="number" class="form-control" id="quantity" value="{{ old('quantity')}}" name="quantity">
+                                    <input type="number" class="form-control mb-3" id="quantity" value="{{ old('quantity')}}" name="quantity">
                                 </div>
                                 <div class="form-group">
-                                    <label for="user_id">{{ __('User ID') }}</label>
-                                    <input type="number" class="form-control" id="user_id" value="{{ old('user_id')}}" name="user_id">
+                                    <label for="user_id">{{ __('Username') }}</label>
+                                    <input id="username" type="text" class="mt-1" name="username" autocomplete="off" placeholder="Search...." />
+                                    <select id="user_list" name="user_id" class="form-select form-select-lg mb-3 mt-3" aria-label=".form-select-lg example">
+                                        
+                                    </select>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -62,4 +66,32 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script type="text/javascript">
+    $('#username').on('keyup', function() {
+        $value = $(this).val();
+        if ($value) {
+            $.ajax({
+                type: 'get',
+                url: '{{ URL::to('search') }}',
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+                    $('#user_list').html(data);
+                }
+            });
+        }
+    })
+    $.ajaxSetup({
+        headers: {
+            'csrftoken': '{{ csrf_token() }}'
+        }
+    });
+    $(document).on('click', 'option', function() {
+        console.log($(this).value());
+        var value = $(this).value();
+        $('#username').val(value);
+        $('#user_list').html("");
+    });
+</script>
 @endsection

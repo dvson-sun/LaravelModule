@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ __('SUBMIT') }}</button>
+                        <button type="submit" class="btn btn-primary mt-5">{{ __('SUBMIT') }}</button>
                     </form>
                 </div>
             </div>

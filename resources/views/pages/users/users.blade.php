@@ -4,14 +4,6 @@
 <div class="col-sm-12 col-sm-offset-3 col-lg-12 col-lg-offset-2 content">
     <div class="container-fluid">
         <div class="row">
-            <ol class="breadcrumb">
-                <li><a href="#"><svg class="glyph stroked home">
-                            <use xlink:href="#stroked-home"></use>
-                        </svg></a></li>
-                <li class="active"> {{__('List Users')}}</li>
-            </ol>
-        </div>
-        <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"> {{__('List Users')}}</h1>
             </div>
@@ -22,9 +14,9 @@
                     <div class="bootstrap-table">
                         <div class="table-responsive">
                             @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ __($message) }}</p>
-                                </div>
+                            <div class="alert alert-success">
+                                <p>{{ __($message) }}</p>
+                            </div>
                             @endif
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -37,6 +29,7 @@
                                         <th>{{__('Role')}}</th>
                                         <th>{{__('Status')}}</th>
                                         <th>{{__('Action')}}</th>
+                                        <!-- <th>{{__('Delete')}}</th> -->
                                     </thead>
                                     <tbody>
                                         @foreach($users as $key => $user)
@@ -48,21 +41,23 @@
                                             <td>{{ $user->email }}</td>
                                             <td>
                                                 @if ($user->isAdmin)
-                                                    <p class="btn btn-success">{{ __('Admin') }}</p>
+                                                <p class="btn btn-success">{{ __('Admin') }}</p>
                                                 @else
-                                                    <p class="btn btn-primary">{{ __('User') }}</p>
+                                                <p class="btn btn-primary">{{ __('User') }}</p>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if ($user->isActive)
-                                                    <p class="btn btn-success">{{ __('Active') }}</p>
+                                                <p class="btn btn-success">{{ __('Active') }}</p>
                                                 @else
-                                                    <p class="btn btn-warning">{{ __('Deactive') }}</p>
+                                                <p class="btn btn-warning">{{ __('Deactive') }}</p>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a href="{{route('users.show', $user->id)}}" class="btn btn-info"><i class="fa fa-list" aria-hidden="true"></i> {{__('Detail')}}</a>
                                                 <a href="{{route('users.edit', $user->id)}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{__('Update')}}</a>
+                                            </td>
+                                            <td>
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -76,7 +71,6 @@
                             </div>
                         </div>
                         {{ $users->links('pagination::bootstrap-4') }}
-
                     </div>
                 </div>
             </div>

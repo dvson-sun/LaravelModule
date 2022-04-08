@@ -1,4 +1,9 @@
 {
+    "Home" : "Trang chủ",
+    "Quantity must be more than 0" : "Số lượng không được nhỏ hơn 0",
+    "Users" : "Người dùng",
+    "Add Order" : "Thêm đơn hàng",
+    "Edit Order" : "Sửa đơn hàng",
     "First Name is required!" : "Họ không được để trống!",
     "First Name cannot be more than 255 characters!" : "Họ không được nhiều hơn 255 ký tự",
     "Last Name is required!" : "Tên không được để trống",
@@ -42,7 +47,7 @@
     "User" : "Người dùng",
     "Admin" : "Quản trị viên",
     "User Name" : "Tên Tài Khoản",
-    "Dashboard" : "Trang chủ",
+    "Dashboard" : "Bảng điều khiển",
     "Orders List" : "Danh sách đơn hàng",
     "Detail" : "Chi tiết",
     "Delete" : "Xóa",

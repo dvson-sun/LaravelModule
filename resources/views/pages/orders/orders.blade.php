@@ -10,9 +10,9 @@
                         <h2 class="title">{{__('List Orders')}}</h2>
                     </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ __($message) }}</p>
-                        </div>
+                    <div class="alert alert-success">
+                        <p>{{ __($message) }}</p>
+                    </div>
                     @endif
                     <a href="{{ route('orders.create') }}" class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> {{__('Add Order')}}</a>
                     <div class="content table-responsive table-full-width">
@@ -37,11 +37,13 @@
                                     <td class="text-truncate">{{ $order->username }}</td>
                                     <td>
                                         <a href="{{route('orders.edit', $order->id)}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{__('Update')}}</a>
+                                    </td>
+                                    <td>
                                         <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" id="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');" class="btn btn-danger"> <i class="fa fa-remove" aria-hidden="true"></i> {{__('Delete')}}</button>
-                                                </form>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" id="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');" class="btn btn-danger"> <i class="fa fa-remove" aria-hidden="true"></i> {{__('Delete')}}</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

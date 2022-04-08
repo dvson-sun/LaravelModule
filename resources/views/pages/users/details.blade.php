@@ -63,7 +63,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($details as $key => $item)
+                                        @foreach ($details as $key => $item)
                                         <tr>
                                             <td scope="row">{{ ($details->currentpage() - 1) * $details->perpage() + $key + 1 }}</td>
                                             <td> {{ $item->name }}</td>

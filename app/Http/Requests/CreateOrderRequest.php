@@ -26,7 +26,7 @@ class CreateOrderRequest extends FormRequest
         return [
             'name' => 'required|max:255|min:4',
             'price' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|gt:0',
             'user_id' => 'required|exists:users,id',
         ];
     }
@@ -38,6 +38,7 @@ class CreateOrderRequest extends FormRequest
             'name.min' => 'Name cannot be less than 3 characters !',
             'name.max' => 'Name cannot be more than 255 characters !',
             'user_id.required' => 'User_id is required !',
+            'quantity.gt' => 'Quantity must be more than 0',
             'user_id.exists' => "User_id not exists!",
         ];
     }

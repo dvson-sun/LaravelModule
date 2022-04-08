@@ -3,6 +3,11 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <a href="/">
+                <p><i class="fa fa-home" aria-hidden="true"></i> {{__('Home')}}</p>
+            </a>
+        </h2>
     </x-slot>
 
     <div class="py-12">

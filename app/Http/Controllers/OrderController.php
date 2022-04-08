@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\EditOrderRequest;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -72,8 +73,9 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
+        $user = User::findOrFail($order->user_id);
 
-        return view('pages.orders.edit', compact('order'));
+        return view('pages.orders.edit', compact('order','user'));
     }
 
     /**
@@ -107,5 +109,20 @@ class OrderController extends Controller
         $user->delete();
 
         return redirect()->route('orders.index')->with('success','Delete success');
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()){
+            $output = '';
+            $username = DB::table('users')->where('username', 'LIKE', '%' . $request->search . '%')->get();
+            if (strlen($request->search) > 0) {
+                foreach ($username as $key => $item) {
+                    $output .= '<option class="list-group-item" value="'.$item->id.'">'.$item->username.': '.$item->first_name.' '.$item->last_name.'</option>';
+                }
+            }
+            
+            return Response($output);
+        }
     }
 }
